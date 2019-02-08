@@ -4,6 +4,16 @@
 #' @description
 #' @references Z. Cao, D. Bryant, C. Fox, T. Molten and M. Parry. "V-Spline: an Adaptive Smoothing Spline
 #' for Trajectory Reconstruction" arXiv preprint arXiv:1803.07184 (2018).
+#' @seealso \code{\link{getTheta}}, \code{\link{loocvVSP}}
+#' @examples
+#' n <-100
+#' s <- seq(1,2*pi,length=n)
+#' y <- sin(s) + rnorm(n)
+#' v <- cos(s) + rnorm(n)
+#' simuData <- data.frame(t=s,x=y,mx=v)
+#' fitted   <- fitVSP(simuData)
+#' plot(s,y)
+#' points(fitted$t,fitted$x,col="red",type="l")
 #' @export
 fitVSP <- function(dat,pa=c(1,1)){
 

@@ -11,6 +11,7 @@
 #'
 #' @references Z. Cao, D. Bryant, C. Fox, T. Molten and M. Parry. "V-Spline: an Adaptive Smoothing Spline
 #' for Trajectory Reconstruction" arXiv preprint arXiv:1803.07184 (2018).
+#' @export
 N1= function(k,t,est){
 
   a=t[1]
@@ -23,7 +24,7 @@ N1= function(k,t,est){
 
   return(f=fx)
 }
-
+#' @rdname N1
 N2= function(k,t,est){
 
   a=t[1]
@@ -35,7 +36,7 @@ N2= function(k,t,est){
 
   return(f=fx)
 }
-
+#' @rdname N1
 N2k1= function(k,t,est){
 
   a=t[k]
@@ -55,7 +56,7 @@ N2k1= function(k,t,est){
 
   return(f=fx)
 }
-
+#' @rdname N1
 N2k2= function(k,t,est){
 
   a=t[k]
@@ -71,7 +72,7 @@ N2k2= function(k,t,est){
 
   return(f=fx)
 }
-
+#' @rdname N1
 N2n1= function(k,t,est){
 
   n=length(t)
@@ -86,7 +87,7 @@ N2n1= function(k,t,est){
 
   return(f=fx)
 }
-
+#' @rdname N1
 N2n= function(k,t,est){
 
   n=length(t)
@@ -101,9 +102,7 @@ N2n= function(k,t,est){
 
   return(f=fx)
 }
-
-
-
+#' @rdname N1
 dN1= function(k,t,est){
 
   a=t[1]
@@ -116,7 +115,7 @@ dN1= function(k,t,est){
 
   return(f=fx)
 }
-
+#' @rdname N1
 dN2= function(k,t,est){
 
   a=t[1]
@@ -128,7 +127,7 @@ dN2= function(k,t,est){
 
   return(f=fx)
 }
-
+#' @rdname N1
 dN2k1= function(k,t,est){
 
   a=t[k]
@@ -148,7 +147,7 @@ dN2k1= function(k,t,est){
 
   return(f=fx)
 }
-
+#' @rdname N1
 dN2k2= function(k,t,est){
 
   a=t[k]
@@ -164,7 +163,7 @@ dN2k2= function(k,t,est){
 
   return(f=fx)
 }
-
+#' @rdname N1
 dN2n1= function(k,t,est){
 
   n=length(t)
@@ -179,7 +178,7 @@ dN2n1= function(k,t,est){
 
   return(f=fx)
 }
-
+#' @rdname N1
 dN2n= function(k,t,est){
 
   n=length(t)
@@ -194,8 +193,7 @@ dN2n= function(k,t,est){
 
   return(f=fx)
 }
-
-
+#' @rdname N1
 d2N1= function(k,t,est){
 
   a=t[1]
@@ -208,7 +206,7 @@ d2N1= function(k,t,est){
 
   return(f=fx)
 }
-
+#' @rdname N1
 d2N2= function(k,t,est){
 
   a=t[1]
@@ -220,7 +218,7 @@ d2N2= function(k,t,est){
 
   return(f=fx)
 }
-
+#' @rdname N1
 d2N2k1= function(k,t,est){
 
   a=t[k]
@@ -240,7 +238,7 @@ d2N2k1= function(k,t,est){
 
   return(f=fx)
 }
-
+#' @rdname N1
 d2N2k2= function(k,t,est){
 
   a=t[k]
@@ -256,7 +254,7 @@ d2N2k2= function(k,t,est){
 
   return(f=fx)
 }
-
+#' @rdname N1
 d2N2n1= function(k,t,est){
 
   n=length(t)
@@ -271,7 +269,7 @@ d2N2n1= function(k,t,est){
 
   return(f=fx)
 }
-
+#' @rdname N1
 d2N2n= function(k,t,est){
 
   n=length(t)

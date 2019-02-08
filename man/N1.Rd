@@ -2,9 +2,60 @@
 % Please edit documentation in R/basisFunctions.R
 \name{N1}
 \alias{N1}
+\alias{N2}
+\alias{N2k1}
+\alias{N2k2}
+\alias{N2n1}
+\alias{N2n}
+\alias{dN1}
+\alias{dN2}
+\alias{dN2k1}
+\alias{dN2k2}
+\alias{dN2n1}
+\alias{dN2n}
+\alias{d2N1}
+\alias{d2N2}
+\alias{d2N2k1}
+\alias{d2N2k2}
+\alias{d2N2n1}
+\alias{d2N2n}
 \title{V-Spline basis functions}
 \usage{
 N1(k, t, est)
+
+N2(k, t, est)
+
+N2k1(k, t, est)
+
+N2k2(k, t, est)
+
+N2n1(k, t, est)
+
+N2n(k, t, est)
+
+dN1(k, t, est)
+
+dN2(k, t, est)
+
+dN2k1(k, t, est)
+
+dN2k2(k, t, est)
+
+dN2n1(k, t, est)
+
+dN2n(k, t, est)
+
+d2N1(k, t, est)
+
+d2N2(k, t, est)
+
+d2N2k1(k, t, est)
+
+d2N2k2(k, t, est)
+
+d2N2n1(k, t, est)
+
+d2N2n(k, t, est)
 }
 \arguments{
 \item{k}{to determine the location of the estimate.}
