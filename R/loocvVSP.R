@@ -22,7 +22,7 @@ loocvVSP <- function(dat,pa,matrix_list){
 
   O <- Omega*lamb/dat$t[rowlen]^3
 
-  print(pa)
+  #print(pa)
 
   R   <- chol(diag(c(1,eta/dat$t[rowlen]^2),2*rowlen)+O)
   inR <- backsolve(R,diag(2*rowlen),k = ncol(R))

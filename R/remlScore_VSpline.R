@@ -4,7 +4,7 @@
 #' @description Parameter estimation by REML
 #' @export
 remlScore_VSpline<- function(X,Y,V,W,U,pa){
-  print(pa)
+  #print(pa)
   lambda = exp(pa[1])
   gamma  = exp(pa[2])
   
