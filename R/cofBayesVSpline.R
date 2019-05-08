@@ -18,7 +18,7 @@ cofBayesVSpline <- function(X,Y,V,W,U,pa){
   Q<- matrix(0,nrow=n,ncol=n)   
   for(i in 1:n)
     for(j in 1:n)
-      Q[i,j]=R1(X[j],X[i])
+      Q[i,j]=kernelR1(X[j],X[i])
   
   P<- matrix(0,nrow=n,ncol=n)   
   for(i in 1:n)

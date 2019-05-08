@@ -18,7 +18,7 @@ fitBayesVSpline <- function(dat,W=NULL,U=NULL,pa=c(1,1),xout=NULL){
   if(is.null(W)) W <- diag(length(X))
   if(is.null(U)) U <- diag(length(X))
   
-  paraGPR <- optim(pa=pa,fn=remlScore_VSpline,X=X,Y=Y,V=V,W=W,U=U)
+  paraGPR <- optim(pa=pa,fn=remlScoreVSpline,X=X,Y=Y,V=V,W=W,U=U)
   coff    <- cofBayesVSpline(X,Y,V,W,U,paraGPR$par)
   for(l in 1:length(x_star)){
     gen        <- BayesVSpline(X,Y,V,coff,x_star[l])

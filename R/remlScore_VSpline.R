@@ -3,7 +3,7 @@
 #'
 #' @description Parameter estimation by REML
 #' @export
-remlScore_VSpline<- function(X,Y,V,W,U,pa){
+remlScoreVSpline<- function(X,Y,V,W,U,pa){
   #print(pa)
   lambda = exp(pa[1])
   gamma  = exp(pa[2])
@@ -18,7 +18,7 @@ remlScore_VSpline<- function(X,Y,V,W,U,pa){
   Q<- matrix(0,nrow=n,ncol=n)   
   for(i in 1:n)
     for(j in 1:n)
-      Q[i,j]=R1(X[j],X[i])
+      Q[i,j]=kernelR1(X[j],X[i])
   
   P<- matrix(0,nrow=n,ncol=n)   
   for(i in 1:n)

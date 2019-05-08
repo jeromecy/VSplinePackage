@@ -15,7 +15,7 @@ BayesVSpline<- function(X,Y,V,coff,est){
   phi=matrix(c(1,est),nrow=2,ncol=1)
   
   xi<- matrix(0,nrow=n,ncol=1)
-  for(i in 1:n)  xi[i,1]=R1(X[i],est)
+  for(i in 1:n)  xi[i,1]=kernelR1(X[i],est)
   
   psi<- matrix(0,nrow=n,ncol=1)   
   for(i in 1:n)

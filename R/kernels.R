@@ -9,27 +9,27 @@
 #' for Trajectory Reconstruction" arXiv preprint arXiv:1803.07184 (2018).
 #' @references Z. Cao, D. Bryant, and M. Parry. "V-spline and its Bayes estimate" arXiv (2018).
 #' @export
-R1<- function(x,y){
+kernelR1<- function(x,y){
   return(abs(x-y)*min(x,y)^2/2+min(x,y)^3/3)  
 }
-#' @rdname R1
+#' @rdname kernelR1
 dotR1<- function(x,y){  
   return(y*min(x,y)-min(x,y)^2/2)  
 }
-#' @rdname R1
+#' @rdname kernelR1
 dR1<- function(x,y){
   return(x*min(x,y)-min(x,y)^2/2)
 }
-#' @rdname R1
+#' @rdname kernelR1
 ddotR1<- function(x,y){
   return(min(x,y))
 }
-#' @rdname R1
+#' @rdname kernelR1
 ddotdotR1<- function(x,y){
   if(y>=x) return(1)
   else if(y<x)  return(0)
 }
-#' @rdname R1
+#' @rdname kernelR1
 dotdotR1<- function(x,y){
   if(y>=x) return(y-x)
   else if(y<x)  return(0)
