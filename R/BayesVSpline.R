@@ -22,7 +22,7 @@ BayesVSpline<- function(X,Y,V,coff,est){
     psi[i,1]=dotR1(X[i],est)
   
   newPa <- c(xi,psi)
-  
+  #
   mu <- t(phi)%*%d+t(newPa)%*%bc
   sig<- kernelR1(est,est) + t(phi)%*%coff$inW%*%phi- t(newPa)%*%coff$pbc%*%newPa -
     t(phi)%*%coff$pd%*%newPa - t(newPa)%*%coff$pe%*%phi
