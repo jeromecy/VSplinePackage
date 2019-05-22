@@ -25,6 +25,7 @@ ddotR1<- function(x,y){
   return(min(x,y))
 }
 #' @rdname kernelR1
+#' 
 # ddotdotR1<- function(x,y){
 #   if(y>=x) return(1)
 #   else if(y<x)  return(0)
