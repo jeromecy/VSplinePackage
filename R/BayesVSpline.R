@@ -24,7 +24,7 @@ BayesVSpline<- function(X,Y,V,coff,est){
   newPa <- c(xi,psi)
   
   mu <- t(phi)%*%d+t(newPa)%*%bc
-  sig<- R1(est,est) + t(phi)%*%coff$inW%*%phi- t(newPa)%*%coff$pbc%*%newPa -
+  sig<- kernelR1(est,est) + t(phi)%*%coff$inW%*%phi- t(newPa)%*%coff$pbc%*%newPa -
     t(phi)%*%coff$pd%*%newPa - t(newPa)%*%coff$pe%*%phi
   
   dphi=matrix(c(0,1),nrow=2,ncol=1)
