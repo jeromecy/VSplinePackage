@@ -12,23 +12,23 @@
 #' @export
 getTheta <- function(data_frame,pa,matrix_list){
 
-  lamb   <- exp(pa[1])
-  eta    <- exp(pa[2])
+  lamb  <- exp(pa[1])
+  eta   <- exp(pa[2])
 
-  n      <- nrow(data_frame)
-  sub_t  <- data_frame$t # /data_frame$t[n]
+  rowlen<- nrow(data_frame)
+  sub_t <- data_frame$t # /data_frame$t[rowlen]
 
-  sub_x  <- data_frame$x
-  sub_mx <- data_frame$mx
+  sub_y <- data_frame$y
+  sub_v <- data_frame$v
 
   B     <- matrix_list$B
   C     <- matrix_list$C
   Omega <- matrix_list$Omega
 
-  # O     <- Omega*lamb #/data_frame$t[n]^3
-  # R     <- chol(diag(c(1,eta/data_frame$t[n]^2),2*n)+O)
-  # theta <- backsolve(R,forwardsolve(t(R),t(B)%*%sub_x/n+eta/data_frame$t[n]^2*t(C)%*%sub_mx/n))
-  R     <- solve(t(B)%*%B+eta*t(C)%*%C+Omega*n)
-  theta <- R%*%(t(B)%*%sub_x+eta*t(C)%*%sub_mx)
+  # O     <- Omega*lamb #/data_frame$t[rowlen]^3
+  # R     <- chol(diag(c(1,eta/data_frame$t[rowlen]^2),2*rowlen)+O)
+  # theta <- backsolve(R,forwardsolve(t(R),t(B)%*%sub_y/rowlen+eta/data_frame$t[rowlen]^2*t(C)%*%sub_v/rowlen))
+  R     <- solve(t(B)%*%B+eta*t(C)%*%C+Omega*rowlen)
+  theta <- R%*%(t(B)%*%sub_y+eta*t(C)%*%sub_v)
   return(theta)
 }

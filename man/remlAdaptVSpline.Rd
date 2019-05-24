@@ -4,7 +4,7 @@
 \alias{remlAdaptVSpline}
 \title{REML score of GPR V-splines}
 \usage{
-remlAdaptVSpline(X, Y, V, w, pa)
+remlAdaptVSpline(X, Y, V, lab, pa)
 }
 \description{
 Parameter estimation by REML

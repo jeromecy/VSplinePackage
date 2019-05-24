@@ -13,8 +13,8 @@ loocvVSP <- function(dat,pa,matrix_list){
 
   rowlen <- nrow(dat)
   loo_t  <- dat$t
-  loo_x  <- dat$x
-  loo_mx <- dat$mx
+  loo_y  <- dat$y
+  loo_v  <- dat$v
 
   B     <- matrix_list$B
   C     <- matrix_list$C
@@ -28,8 +28,8 @@ loocvVSP <- function(dat,pa,matrix_list){
   inR <- backsolve(R,diag(2*rowlen),k = ncol(R))
 
   ## faster getting STUV
-  alpha <-  B %*% inR
-  beta  <-   C %*% inR
+  alpha <- B %*% inR
+  beta  <- C %*% inR
 
   Sf  <- alpha %*% t(alpha)
   Tf  <- alpha %*% t(beta)
@@ -37,12 +37,12 @@ loocvVSP <- function(dat,pa,matrix_list){
   Vdf <- beta%*%t(beta)
 
 
-  fx  <- Sf%*%loo_x+eta*Tf%*%loo_mx
-  dfx <- Udf%*%loo_x+eta*Vdf%*%loo_mx
+  fx  <- Sf%*%loo_y+eta*Tf%*%loo_v
+  dfx <- Udf%*%loo_y+eta*Vdf%*%loo_v
 
   cv <- 0
   for(i in 1:rowlen){
-    cv <- cv+(((fx[i]-loo_x[i])+eta*Tf[i,i]/(1-eta*Vdf[i,i])*(dfx[i]-loo_mx[i]))/(1-Sf[i,i]-eta*Tf[i,i]/(1-eta*Vdf[i,i])*Udf[i,i]))^2
+    cv <- cv+(((fx[i]-loo_y[i])+eta*Tf[i,i]/(1-eta*Vdf[i,i])*(dfx[i]-loo_v[i]))/(1-Sf[i,i]-eta*Tf[i,i]/(1-eta*Vdf[i,i])*Udf[i,i]))^2
   }
   cv <- cv/rowlen
 

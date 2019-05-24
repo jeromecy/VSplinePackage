@@ -4,7 +4,7 @@
 \alias{rcstVSP}
 \title{Reconstruction points}
 \usage{
-rcstVSP(data_frame, theta)
+rcstVSP(data_frame, theta, xout = NULL)
 }
 \description{
 To reconstruct the V-Spline with \eqn{\theta}, which is gained from \code{getTheta()}.

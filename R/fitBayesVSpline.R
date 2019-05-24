@@ -3,10 +3,10 @@
 #' @description
 #' @export
 fitBayesVSpline <- function(dat,W=NULL,U=NULL,pa=c(1,1),xout=NULL){
-  if(is.null(xout)) x_star <- dat$x
+  if(is.null(xout)) x_star <- dat$t
   else x_star <- xout
   
-  X<- dat$x
+  X<- dat$t
   Y<- dat$y
   V<- dat$v
   GPmean_x  <- numeric(length(x_star))
@@ -26,7 +26,7 @@ fitBayesVSpline <- function(dat,W=NULL,U=NULL,pa=c(1,1),xout=NULL){
     GPsig_x[l] <- gen$sig
     GPmean_v[l]<- gen$mv
   }
-  return(list(x=x_star,y=GPmean_x,sig=GPsig_x,v=GPmean_v))
+  return(list(t=x_star,y=GPmean_x,sig=GPsig_x,v=GPmean_v))
 }
 
 

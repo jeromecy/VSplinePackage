@@ -8,15 +8,15 @@
 \alias{ddotdotR1adap}
 \title{Kernel functions of Bayes estimate of V-Splines}
 \usage{
-kernelR1adap(x, y, w, alt)
+kernelR1adap(x, y, lab, alt)
 
-dotR1adap(x, y, w, alt)
+dotR1adap(x, y, lab, alt)
 
-dR1adap(x, y, w, alt)
+dR1adap(x, y, lab, alt)
 
-ddotR1adap(x, y, w, alt)
+ddotR1adap(x, y, lab, alt)
 
-ddotdotR1adap(x, y, w, alt)
+ddotdotR1adap(x, y, lab, alt)
 }
 \description{
 adaptive Kernel functions \eqn{R_w^1(s,t), \dot{R}_w^1(s,t), 

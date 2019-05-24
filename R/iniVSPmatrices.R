@@ -9,9 +9,9 @@
 #'
 #' @export
 iniVSPmat <- function(dat,a=3,b=2){
-  rowlen   <- nrow(dat)
-  loo_t    <- dat$t # /dat$t[rowlen]
-  loo_x    <- dat$x
+  rowlen <- nrow(dat)
+  loo_t  <- dat$t # /dat$t[rowlen]
+  loo_x  <- dat$y
 
   B      <- matrix(0,nrow=rowlen,ncol=2*rowlen)
   for(k in 1:(rowlen-2)) B[k+1,2*k+1] <- 1

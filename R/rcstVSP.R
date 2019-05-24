@@ -5,14 +5,17 @@
 #' @references Z. Cao, D. Bryant, C. Fox, T. Molten and M. Parry. "V-Spline: an Adaptive Smoothing Spline
 #' for Trajectory Reconstruction" arXiv preprint arXiv:1803.07184 (2018).
 #' @export
-rcstVSP <- function(data_frame,theta){
+rcstVSP <- function(data_frame,theta,xout=NULL){
   sub_t <- data_frame$t
-  n     <- length(sub_t)
+  rowlen<- length(sub_t)
 
-  tx   <- seq(sub_t[1],sub_t[n],length = (n*10))
-  fx   <- numeric(length(tx))
-  dfx  <- numeric(length(tx))
-  d2fx <- numeric(length(tx))
+  #tx   <- seq(sub_t[1],sub_t[rowlen],length = (rowlen*10))
+  if(is.null(xout)) tx <- data_frame$t
+  else tx <- xout
+  
+  ft   <- numeric(length(tx))
+  dft  <- numeric(length(tx))
+  d2ft <- numeric(length(tx))
 
   for(k in 1:length(tx)){
     x_est    <- tx[k]
@@ -29,12 +32,12 @@ rcstVSP <- function(data_frame,theta){
       temp_dx  <- temp_dx+theta[2*l+1]*dN2k1(l,sub_t,x_est)+theta[2*l+2]*dN2k2(l,sub_t,x_est)
       temp_d2x <- temp_d2x+theta[2*l+1]*d2N2k1(l,sub_t,x_est)+theta[2*l+2]*d2N2k2(l,sub_t,x_est)
      }
-    temp_x   <- temp_x+theta[2*n-1]*N2n1(n-1,sub_t,x_est)+theta[2*n]*N2n(n,sub_t,x_est)
-    temp_dx  <- temp_dx+theta[2*n-1]*dN2n1(n-1,sub_t,x_est)+theta[2*n]*dN2n(n,sub_t,x_est)
-    temp_d2x <- temp_d2x+theta[2*n-1]*d2N2n1(n-1,sub_t,x_est)+theta[2*n]*d2N2n(n,sub_t,x_est)
-    fx[k]    <- temp_x
-    dfx[k]   <- temp_dx
-    d2fx[k]  <- temp_d2x
+    temp_x   <- temp_x+theta[2*rowlen-1]*N2n1(rowlen-1,sub_t,x_est)+theta[2*rowlen]*N2n(rowlen,sub_t,x_est)
+    temp_dx  <- temp_dx+theta[2*rowlen-1]*dN2n1(rowlen-1,sub_t,x_est)+theta[2*rowlen]*dN2n(rowlen,sub_t,x_est)
+    temp_d2x <- temp_d2x+theta[2*rowlen-1]*d2N2n1(rowlen-1,sub_t,x_est)+theta[2*rowlen]*d2N2n(rowlen,sub_t,x_est)
+    ft[k]    <- temp_x
+    dft[k]   <- temp_dx
+    d2ft[k]  <- temp_d2x
   }
-  return(list(t = tx,x = fx,vx = dfx,ax = d2fx))
+  return(list(t = tx,y = ft,v = dft,av = d2ft))
 }

@@ -3,50 +3,48 @@
 #'
 #' @description Parameter estimation by REML
 #' @export
-remlAdaptVSpline<- function(X,Y,V,w,pa){
+remlAdaptVSpline<- function(X,Y,V,lab,pa){
   #print(pa)
-  w     <- w*exp(pa[1])
+  lab   <- lab*exp(pa[1])
   gamma <- exp(pa[2])
+  ob    <- c(Y,V)
+  rowlen <- length(X)
+  alt    <- X
   
-  ob<- c(Y,V)
-
-  n   = length(X)
-  alt = X
+  S     <- matrix(0,nrow=rowlen,ncol=2)  
+  S[,1] <- 1
+  S[,2] <- X
   
-  S     = matrix(0,nrow=n,ncol=2)  
-  S[,1] = 1
-  S[,2] = X
+  Q<- matrix(0,nrow=rowlen,ncol=rowlen)   
+  for(i in 1:rowlen)
+    for(j in 1:rowlen)
+      Q[i,j]=kernelR1adap(X[j],X[i],lab,alt)
   
-  Q<- matrix(0,nrow=n,ncol=n)   
-  for(i in 1:n)
-    for(j in 1:n)
-      Q[i,j]=kernelR1adap(X[j],X[i],w,alt)
+  P<- matrix(0,nrow=rowlen,ncol=rowlen)   
+  for(i in 1:rowlen)
+    for(j in 1:rowlen)
+      P[i,j]=dotR1adap(X[j],X[i],lab,alt)
   
-  P<- matrix(0,nrow=n,ncol=n)   
-  for(i in 1:n)
-    for(j in 1:n)
-      P[i,j]=dotR1adap(X[j],X[i],w,alt)
+  dS<- matrix(c(0,1),nrow=rowlen,ncol=2,byrow=TRUE)
   
-  dS<- matrix(c(0,1),nrow=n,ncol=2,byrow=TRUE)
+  dQ<- matrix(0,nrow=rowlen,ncol=rowlen)   
+  for(i in 1:rowlen)
+    for(j in 1:rowlen)
+      dQ[i,j]=dR1adap(X[j],X[i],lab,alt)
   
-  dQ<- matrix(0,nrow=n,ncol=n)   
-  for(i in 1:n)
-    for(j in 1:n)
-      dQ[i,j]=dR1adap(X[j],X[i],w,alt)
-  
-  dP<- matrix(0,nrow=n,ncol=n)   
-  for(i in 1:n)
-    for(j in 1:n)
-      dP[i,j]=ddotR1adap(X[j],X[i],w,alt)
+  dP<- matrix(0,nrow=rowlen,ncol=rowlen)   
+  for(i in 1:rowlen)
+    for(j in 1:rowlen)
+      dP[i,j]=ddotR1adap(X[j],X[i],lab,alt)
   
   TT<- rbind(S,dS)
   
-  var_y <- Q+n*diag(n)
+  var_y <- Q+rowlen*diag(rowlen)
   cov_yv<- P 
   cov_vy<- dQ   
-  var_v <- dP+n*diag(n)/gamma
+  var_v <- dP+rowlen*diag(rowlen)/gamma
   
-  M <- rbind(cbind(var_y,cov_yv),cbind(cov_vy,var_v))
+  M  <- rbind(cbind(var_y,cov_yv),cbind(cov_vy,var_v))
   
   R  <- chol(M)
   inM<- solve(R)%*%solve(t(R))
@@ -54,10 +52,10 @@ remlAdaptVSpline<- function(X,Y,V,w,pa){
   inW<- solve(t(TT)%*%inM%*%TT)
   pbc<- inM-inM%*%TT%*%solve(t(TT)%*%inM%*%TT)%*%t(TT)%*%inM
   
-  matA <- diag(2*n)-diag(rep(c(n,n/gamma),each=n))%*%pbc
+  matA <- diag(2*rowlen)-diag(rep(c(rowlen,rowlen/gamma),each=rowlen))%*%pbc
   
-  reml <- t(ob)%*%t(diag(2*n)-t(matA))%*%(diag(2*n)-t(matA))%*%ob/
-    sum(diag(diag(2*n)-matA))
+  reml <- t(ob)%*%t(diag(2*rowlen)-t(matA))%*%(diag(2*rowlen)-t(matA))%*%ob/
+    sum(diag(diag(2*rowlen)-matA))
   
   return(reml)
 }
