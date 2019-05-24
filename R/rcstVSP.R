@@ -20,7 +20,7 @@ rcstVSP <- function(data_frame,theta){
     temp_dx  <- 0
     temp_d2x <- 0
 
-    temp_x   <- theta[1]*N1(1,sub_t,x_est)+theta[2]*N2(1,sub_t,x_est)
+    temp_x   <- theta[1]*bN1(1,sub_t,x_est)+theta[2]*bN2(1,sub_t,x_est)
     temp_dx  <- theta[1]*dN1(1,sub_t,x_est)+theta[2]*dN2(1,sub_t,x_est)
     temp_d2x <- theta[1]*d2N1(1,sub_t,x_est)+theta[2]*d2N2(1,sub_t,x_est)
 

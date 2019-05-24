@@ -12,7 +12,7 @@
 #' @references Z. Cao, D. Bryant, C. Fox, T. Molten and M. Parry. "V-Spline: an Adaptive Smoothing Spline
 #' for Trajectory Reconstruction" arXiv preprint arXiv:1803.07184 (2018).
 #' @export
-N1= function(k,t,est){
+bN1= function(k,t,est){
 
   a=t[1]
   b=t[2]
@@ -25,7 +25,7 @@ N1= function(k,t,est){
   return(f=fx)
 }
 #' @rdname N1
-N2= function(k,t,est){
+bN2= function(k,t,est){
 
   a=t[1]
   b=t[2]
