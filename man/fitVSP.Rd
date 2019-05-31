@@ -4,7 +4,7 @@
 \alias{fitVSP}
 \title{Fit V-Spline model}
 \usage{
-fitVSP(dat, pa = c(1, 1))
+fitVSP(dat, pa = NULL, xout = NULL, a = 3, b = 2)
 }
 \description{
 Fit V-Spline model
@@ -14,10 +14,10 @@ n <-100
 s <- seq(1,2*pi,length=n)
 y <- sin(s) + rnorm(n)
 v <- cos(s) + rnorm(n)
-simuData <- data.frame(t=s,x=y,mx=v)
+simuData <- data.frame(t=s,y=y,v=v)
 fitted   <- fitVSP(simuData)
 plot(s,y)
-points(fitted$t,fitted$x,col="red",type="l")
+points(fitted$vsp$t,fitted$vsp$y,col="red",type="l")
 }
 \references{
 Z. Cao, D. Bryant, C. Fox, T. Molten and M. Parry. "V-Spline: an Adaptive Smoothing Spline

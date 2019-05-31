@@ -4,9 +4,9 @@
 \alias{fitAdapBayesVSpline}
 \title{Bayes estimate of adaptive V-Splines}
 \usage{
-fitAdapBayesVSpline(dat, W = NULL, U = NULL, pa = c(1, 1),
-  xout = NULL)
+fitAdapBayesVSpline(dat, W = NULL, U = NULL, pa = NULL, a = 3,
+  b = 2, xout = NULL)
 }
 \description{
-Bayes estimate of adaptive V-Splines
+Fitting adaptive V-splines with piecewise \eqn{\lambda}s.
 }

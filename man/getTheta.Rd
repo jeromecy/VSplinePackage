@@ -4,10 +4,10 @@
 \alias{getTheta}
 \title{The estimated parameter \eqn{\theta}}
 \usage{
-getTheta(data_frame, pa, matrix_list)
+getTheta(datall, pa, matrix_list)
 }
 \arguments{
-\item{data_frame}{the data frame}
+\item{datall}{the data frame}
 
 \item{pa}{the parameters \eqn{\lambda} and \eqn{\gamma}, which were found by \code{loocvVSP()} function.}
 

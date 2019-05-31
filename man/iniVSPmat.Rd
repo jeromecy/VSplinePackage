@@ -4,7 +4,7 @@
 \alias{iniVSPmat}
 \title{Initialise V-Spline matrices \eqn{B}, \eqn{C} and \eqn{\Omega}}
 \usage{
-iniVSPmat(dat, a = 3, b = 2)
+iniVSPmat(dat, a, b)
 }
 \description{
 This function is utilised for initializing the V-Spline matreces \eqn{B},

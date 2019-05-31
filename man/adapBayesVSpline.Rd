@@ -4,7 +4,7 @@
 \alias{adapBayesVSpline}
 \title{Bayes estimate for adaptive V-splines}
 \usage{
-adapBayesVSpline(X, Y, V, coff, lab, gamma, est)
+adapBayesVSpline(X, Y, V, coff, lambs, est)
 }
 \description{
 Fitting the Bayes estimate of adaptive V-splines

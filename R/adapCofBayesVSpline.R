@@ -3,48 +3,48 @@
 #'
 #' @description To reconstruct the coefficients for adaptive V-splines.
 #' @export
-adapCofBayesVSpline <- function(X,Y,V,lab,gamma){
-  rowlen   = length(X)
-  alt = X
+adapCofBayesVSpline <- function(X,Y,V,lambs,gam){
+  rowlen = length(X)
+  alt    = X
   
-  S     = matrix(0,nrow=rowlen,ncol=2)  
-  S[,1] = 1
-  S[,2] = X
+  adapS     = matrix(0,nrow=rowlen,ncol=2)  
+  adapS[,1] = 1
+  adapS[,2] = X
   
-  Q<- matrix(0,nrow=rowlen,ncol=rowlen)   
+  adapQ<- matrix(0,nrow=rowlen,ncol=rowlen)   
   for(i in 1:rowlen)
     for(j in 1:rowlen)
-      Q[i,j]=kernelR1adap(X[j],X[i],lab,alt)
+      adapQ[i,j]=kernelR1adap(X[j],X[i],lambs,alt)
   
-  P<- matrix(0,nrow=rowlen,ncol=rowlen)   
+  adapP<- matrix(0,nrow=rowlen,ncol=rowlen)   
   for(i in 1:rowlen)
     for(j in 1:rowlen)
-      P[i,j]=dotR1adap(X[j],X[i],lab,alt)
+      adapP[i,j]=dotR1adap(X[j],X[i],lambs,alt)
   
-  dS<- matrix(c(0,1),nrow=rowlen,ncol=2,byrow=TRUE)
+  adapdS<- matrix(c(0,1),nrow=rowlen,ncol=2,byrow=TRUE)
   
-  dQ<- matrix(0,nrow=rowlen,ncol=rowlen)   
+  adapdQ<- matrix(0,nrow=rowlen,ncol=rowlen)   
   for(i in 1:rowlen)
     for(j in 1:rowlen)
-      dQ[i,j]=dR1adap(X[j],X[i],lab,alt)
+      adapdQ[i,j]=dR1adap(X[j],X[i],lambs,alt)
   
-  dP<- matrix(0,nrow=rowlen,ncol=rowlen)   
+  adapdP<- matrix(0,nrow=rowlen,ncol=rowlen)   
   for(i in 1:rowlen)
     for(j in 1:rowlen)
-      dP[i,j]=ddotR1adap(X[j],X[i],lab,alt)
+      adapdP[i,j]=ddotR1adap(X[j],X[i],lambs,alt)
   
-  TT<- rbind(S,dS)
+  TT<- rbind(adapS,adapdS)
   
-  var_y <- Q+rowlen*diag(rowlen)
-  cov_yv<- P 
-  cov_vy<- dQ   
-  var_v <- dP+rowlen*diag(rowlen)/gamma
+  var_y <- adapQ+rowlen*diag(rowlen)
+  cov_yv<- adapP 
+  cov_vy<- adapdQ   
+  var_v <- adapdP+rowlen*diag(rowlen)/gam
   
-  M <- rbind(cbind(var_y,cov_yv),cbind(cov_vy,var_v))
+  Mlab <- rbind(cbind(var_y,cov_yv),cbind(cov_vy,var_v))
   
-  #inM=solve(M)
-  R  <- chol(M)
-  inM<- solve(R)%*%solve(t(R))
+  # inM=solve(Mlab)
+  Rlab <- chol(Mlab)
+  inM  <- solve(Rlab)%*%solve(t(Rlab))
   
   # ob<- c(Y,V)
   

@@ -4,7 +4,7 @@
 \alias{fitBayesVSpline}
 \title{Bayes estimate of V-Spline model}
 \usage{
-fitBayesVSpline(dat, W = NULL, U = NULL, pa = c(1, 1), xout = NULL)
+fitBayesVSpline(dat, W = NULL, U = NULL, pa = NULL, xout = NULL)
 }
 \description{
 Bayes estimate of V-Spline model

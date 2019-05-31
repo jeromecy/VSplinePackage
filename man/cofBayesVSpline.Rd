@@ -4,7 +4,7 @@
 \alias{cofBayesVSpline}
 \title{Coefficients}
 \usage{
-cofBayesVSpline(X, Y, V, W, U, pa)
+cofBayesVSpline(X, Y, V, W = NULL, U = NULL, lamb, gam)
 }
 \description{
 To reconstruct the coefficients.

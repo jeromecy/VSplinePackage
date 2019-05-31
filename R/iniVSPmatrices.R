@@ -8,7 +8,7 @@
 #' @keywords V-Spline matrices
 #'
 #' @export
-iniVSPmat <- function(dat,a=3,b=2){
+iniVSPmat <- function(dat,a,b){
   rowlen <- nrow(dat)
   loo_t  <- dat$t # /dat$t[rowlen]
   loo_x  <- dat$y

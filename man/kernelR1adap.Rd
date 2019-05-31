@@ -6,27 +6,30 @@
 \alias{dR1adap}
 \alias{ddotR1adap}
 \alias{ddotdotR1adap}
-\title{Kernel functions of Bayes estimate of V-Splines}
+\title{Kernel functions of adaptive V-splines}
 \usage{
-kernelR1adap(x, y, lab, alt)
+kernelR1adap(x1, y1, lambs, alt)
 
-dotR1adap(x, y, lab, alt)
+dotR1adap(x1, y1, lambs, alt)
 
-dR1adap(x, y, lab, alt)
+dR1adap(x1, y1, lambs, alt)
 
-ddotR1adap(x, y, lab, alt)
+ddotR1adap(x1, y1, lambs, alt)
 
-ddotdotR1adap(x, y, lab, alt)
+ddotdotR1adap(x1, y1, lambs, alt)
 }
 \description{
-adaptive Kernel functions \eqn{R_w^1(s,t), \dot{R}_w^1(s,t), 
-R_w^{'1}(s,t), \dot{R}_w^{'1}(s,t)}.
+adaptive Kernel functions \eqn{R_{\lambda 1}(s,t), \dot{R}_{\lambda 1}(s,t), 
+R_{\lambda 1}'(s,t), \dot{R}_{\lambda 1}'(s,t)}.
 }
 \references{
 Z. Cao, D. Bryant, C. Fox, T. Molten and M. Parry. "V-Spline: an Adaptive Smoothing Spline
 for Trajectory Reconstruction" arXiv preprint arXiv:1803.07184 (2018).
 
 Z. Cao, D. Bryant, and M. Parry. "V-spline and its Bayes estimate" arXiv (2018).
+}
+\seealso{
+\code{\link{kernels}} for generic kernels.
 }
 \keyword{Kernel}
 \keyword{adaptive}

@@ -2,9 +2,9 @@
 % Please edit documentation in R/remlAdaptVSpline.R
 \name{remlAdaptVSpline}
 \alias{remlAdaptVSpline}
-\title{REML score of GPR V-splines}
+\title{REML score for adaptive V-splines}
 \usage{
-remlAdaptVSpline(X, Y, V, lab, pa)
+remlAdaptVSpline(X, Y, V, lambs, pa)
 }
 \description{
 Parameter estimation by REML

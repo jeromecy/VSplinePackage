@@ -4,9 +4,9 @@
 #' @description Parameter estimation by REML
 #' @export
 remlScoreVSpline<- function(X,Y,V,W,U,pa){
-  #print(pa)
+  # print(pa)
   lambda = exp(pa[1])
-  gamma  = exp(pa[2])
+  gam    = exp(pa[2])
   
   ob<- c(Y,V)
   
@@ -41,7 +41,7 @@ remlScoreVSpline<- function(X,Y,V,W,U,pa){
   var_y <- Q+rowlen*lambda*W
   cov_yv<- P
   cov_vy<- dQ
-  var_v <- dP+rowlen*lambda/gamma*U
+  var_v <- dP+rowlen*lambda/gam*U
   
   M <- rbind(cbind(var_y,cov_yv),cbind(cov_vy,var_v))
   R <- chol(M)
@@ -59,10 +59,10 @@ remlScoreVSpline<- function(X,Y,V,W,U,pa){
   # Q2 <- qr.Q(qr(TT),complete = TRUE)[,3:94]
   
   # A <- diag(rowlen) - rowlen*lambda*Q2%*%solve(t(Q2)%*%(Q+diag(rowlen*lambda,rowlen))%*%Q2)%*%t(Q2)
-  # B <- diag(rowlen) - rowlen*lambda/gamma*dQ2%*%solve(t(dQ2)%*%(dP+diag(rowlen*lambda/gamma,rowlen))%*%dQ2)%*%t(dQ2)
+  # B <- diag(rowlen) - rowlen*lambda/gam*dQ2%*%solve(t(dQ2)%*%(dP+diag(rowlen*lambda/gam,rowlen))%*%dQ2)%*%t(dQ2)
   # matA <- rbind(cbind(A,matrix(0,rowlen,rowlen)),cbind(matrix(0,rowlen,rowlen),B))
   
-  matA <- diag(2*rowlen)-diag(rep(c(lambda*rowlen,lambda*rowlen/gamma),each=rowlen))%*%pbc
+  matA <- diag(2*rowlen)-diag(rep(c(lambda*rowlen,lambda*rowlen/gam),each=rowlen))%*%pbc
   
   reml <- t(ob)%*%t(diag(2*rowlen)-t(matA))%*%(diag(2*rowlen)-t(matA))%*%ob/
     sum(diag(diag(2*rowlen)-matA))

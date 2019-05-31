@@ -9,17 +9,17 @@
 \alias{dotdotR1}
 \title{Kernel functions of Bayes estimate of V-Splines}
 \usage{
-kernelR1(x, y)
+kernelR1(x1, y1)
 
-dotR1(x, y)
+dotR1(x1, y1)
 
-dR1(x, y)
+dR1(x1, y1)
 
-ddotR1(x, y)
+ddotR1(x1, y1)
 
-ddotdotR1(x, y)
+ddotdotR1(x1, y1)
 
-dotdotR1(x, y)
+dotdotR1(x1, y1)
 }
 \description{
 Kernel functions \eqn{R_1(s,t), \dot{R}_1(s,t), 
@@ -30,6 +30,9 @@ Z. Cao, D. Bryant, C. Fox, T. Molten and M. Parry. "V-Spline: an Adaptive Smooth
 for Trajectory Reconstruction" arXiv preprint arXiv:1803.07184 (2018).
 
 Z. Cao, D. Bryant, and M. Parry. "V-spline and its Bayes estimate" arXiv (2018).
+}
+\seealso{
+\code{\link{adapKernel}} for adaptive kernel functions.
 }
 \keyword{Kernel}
 \keyword{functions}

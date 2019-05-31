@@ -4,7 +4,7 @@
 \alias{adapCofBayesVSpline}
 \title{Coefficients for adaptive V-splines}
 \usage{
-adapCofBayesVSpline(X, Y, V, lab, gamma)
+adapCofBayesVSpline(X, Y, V, lambs, gam)
 }
 \description{
 To reconstruct the coefficients for adaptive V-splines.

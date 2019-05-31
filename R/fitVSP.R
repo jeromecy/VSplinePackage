@@ -10,17 +10,28 @@
 #' s <- seq(1,2*pi,length=n)
 #' y <- sin(s) + rnorm(n)
 #' v <- cos(s) + rnorm(n)
-#' simuData <- data.frame(t=s,x=y,mx=v)
+#' simuData <- data.frame(t=s,y=y,v=v)
 #' fitted   <- fitVSP(simuData)
 #' plot(s,y)
-#' points(fitted$t,fitted$x,col="red",type="l")
+#' points(fitted$vsp$t,fitted$vsp$y,col="red",type="l")
 #' @export
-fitVSP <- function(dat,pa=c(1,1)){
+fitVSP <- function(dat,pa=NULL,xout=NULL,a=3,b=2){
 
-  mats  <- iniVSPmat(dat,a=3,b=2)
-  oppa  <- optim(fn = loocvVSP,dat=dat, pa = pa, matrix_list = mats)
-  theta <- getTheta(dat,oppa$par,mats)
-  rct   <- rcstVSP(dat,theta)
-
-  return(rct)
+  if(is.null(xout)) xout = dat$t
+  
+  if(is.null(pa)){
+    pa    <- c(1,1)
+    mats  <- iniVSPmat(dat,a,b)
+    oppa  <- optim(fn = loocvVSP,dat = dat, pa = pa, matrix_list = mats)
+    theta <- getTheta(dat,oppa$par,mats)
+    vsp   <- rcstVSP(dat,theta,xout)
+    oppa$par <- exp(oppa$par)
+    return(list(vsp = vsp,oppa = oppa))
+  }else{
+    mats  <- iniVSPmat(dat,a,b)
+    theta <- getTheta(dat,log(pa),mats)
+    vsp   <- rcstVSP(dat,theta,xout)
+    return(vsp = vsp)
+  }
+ 
 }
