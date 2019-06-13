@@ -26,7 +26,7 @@ fitBayesVSpline <- function(dat,W=NULL,U=NULL,pa=NULL,xout=NULL){
     for(l in 1:length(x_star)){
       gen        <- BayesVSpline(X,Y,V,coff,x_star[l])
       GPmean_x[l]<- gen$mu
-      GPsig_x[l] <- gen$sig
+      GPsig_x[l] <- gen$sig/pp[1]/length(X)
       GPmean_v[l]<- gen$mv
     }
     return(list(t=x_star,y=GPmean_x,sig=GPsig_x,v=GPmean_v,par=pp,cv=paraGPR$value))
@@ -36,7 +36,7 @@ fitBayesVSpline <- function(dat,W=NULL,U=NULL,pa=NULL,xout=NULL){
     for(l in 1:length(x_star)){
       gen        <- BayesVSpline(X,Y,V,coff,x_star[l])
       GPmean_x[l]<- gen$mu
-      GPsig_x[l] <- gen$sig
+      GPsig_x[l] <- gen$sig/pp[1]/length(X)
       GPmean_v[l]<- gen$mv
     }
     return(list(t=x_star,y=GPmean_x,sig=GPsig_x,v=GPmean_v))

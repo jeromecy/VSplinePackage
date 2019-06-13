@@ -40,7 +40,7 @@ fitAdapBayesVSpline <- function(dat,W=NULL,U=NULL,pa=NULL,a=3,b=2,xout=NULL){
   for(l in 1:length(x_star)){
     gen        <- adapBayesVSpline(X=X,Y=Y,V=V,coff,lambs=labs,x_star[l])
     GPmean_x[l]<- gen$mu
-    GPsig_x[l] <- gen$sig
+    GPsig_x[l] <- gen$sig/rowlen
     GPmean_v[l]<- gen$mv
   }
   return(list(t=x_star,y=GPmean_x,adpSig=GPsig_x,v=GPmean_v,lambdas=labs,gam=gm))
