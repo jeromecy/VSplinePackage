@@ -2,9 +2,10 @@
 
 
 # Overview
---------
 
 The **VSplinePackage** provides an interface to fit V-Spline and adaptive V-Spline models in **R**.
+
+Two different methods **fitVSP** (fit V-Spline) and **fitBayesVSpline** (fit V-Spline in a Bayesian way) are identical in some way and could address the same problem. 
 
 This is an open source for V-Spline R package. Everyone is welcome to contribute on the improvement of this package, comments on coding and fixing bugs.
 
