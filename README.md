@@ -1,7 +1,7 @@
 
 
 
-Overview
+# Overview
 --------
 
 The **VSplinePackage** provides an interface to fit V-Spline and adaptive V-Spline models in **R**.
@@ -10,17 +10,14 @@ This is an open source for V-Spline R package. Everyone is welcome to contribute
 
 Thank you.
 
---------
+# How to install
 
-How to install
-
---------
 ```r
 library(devtools)
 install_github("jeromecy/VSplinePackage")
 ```
 
-A simple example
+# A simple example
 ```r
 set.seed(1234)
 n <- 100
@@ -31,5 +28,5 @@ simuData <- data.frame(t=s,y=y,v=v)
 fitted   <- fitVSP(simuData)
 plot(s,y)
 points(fitted$vsp$t,fitted$vsp$y,col="red",type="l")
-``` 
+```
 --------
