@@ -6,7 +6,7 @@
 #' @keywords V-Spline basis functions#'
 #' @param v noise-free velocity data
 #' @param rsnr signal to noise ratio
-#' @export
+#' SimuData()
 SimuData = function(v,rsnr) {
   n  = length(v)
   dt = 1/n
