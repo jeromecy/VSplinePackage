@@ -9,7 +9,8 @@ SimuData(v, rsnr)
 \arguments{
 \item{v}{noise-free velocity data}
 
-\item{rsnr}{signal to noise ratio}
+\item{rsnr}{signal to noise ratio
+SimuData()}
 }
 \description{
 This function takes *noise-free* velocity data
