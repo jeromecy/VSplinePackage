@@ -17,6 +17,16 @@ Thank you.
 library(devtools)
 install_github("jeromecy/VSplinePackage")
 ```
+# Simulated data
+```r
+library(waveband)
+set.seed(2016)
+velocity17<- test.data(type = "blocks", n = 1024, signal = 1, rsnr = 7, plotfn = TRUE)
+set.seed(2016)
+position17=SimuData(velocity17$y,7)
+simulate17data<- data.frame(t=velocity17$x,y=position17$xnoise,v=velocity17$ynoise,boom=0)
+```
+Available types are "blocks", "bumps", "heavi" (heavisine), and "doppler".
 
 # A simple example
 ```r
