@@ -20,14 +20,21 @@ install_github("jeromecy/VSplinePackage")
 # Simulated data
 ```r
 library(waveband)
+library(VSPline)
 set.seed(2016)
-velocity17<- test.data(type = "blocks", n = 1024, signal = 1, rsnr = 7, plotfn = TRUE)
+N = 100
+velocity<- test.data(type = "blocks", n = N, signal = 1, rsnr = 7, plotfn = TRUE)
 set.seed(2016)
-position17=SimuData(velocity17$y,7)
-simulate17data<- data.frame(t=velocity17$x,y=position17$xnoise,v=velocity17$ynoise,boom=0)
+position=SimuData(velocity$y,7)
+simulatedata<- data.frame(t=velocity$x,y=position$xnoise,v=velocity$ynoise,boom=0)
 ```
 Available types are "blocks", "bumps", "heavi" (heavisine), and "doppler".
 
+```r
+fitted <- fitVSP(simulatedata)
+plot(simulatedata$t,simulatedata$y)
+points(fitted$vsp$t,fitted$vsp$y,col="red",type="l")
+```
 # A simple example
 ```r
 set.seed(1234)
