@@ -14,7 +14,17 @@ SimuData(v, rsnr)
 \description{
 This function takes *noise-free* velocity data
 computes the implied position data and then adds noise.
-It requires function `forward1`.
+It requires function forward1.
+}
+\examples{
+library(waveband)
+library(VSPline)
+set.seed(2016)
+N <- 100
+velocity <- test.data(type = "blocks", n = N, signal = 1, rsnr = 7, plotfn = TRUE)
+set.seed(2016)
+position <- SimuData(velocity$y,7)
+simulatedata<- data.frame(t=velocity$x,y=position$xnoise,v=velocity$ynoise,boom=0)
 }
 \keyword{V-Spline}
 \keyword{basis}
