@@ -9,13 +9,12 @@ SimuData(v, rsnr)
 \arguments{
 \item{v}{noise-free velocity data}
 
-\item{rsnr}{signal to noise ratio
-SimuData()}
+\item{rsnr}{signal to noise ratio}
 }
 \description{
 This function takes *noise-free* velocity data
 computes the implied position data and then adds noise.
-It requires function forward1.
+It requires function `forward1`.
 }
 \keyword{V-Spline}
 \keyword{basis}
