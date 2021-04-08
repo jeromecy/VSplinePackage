@@ -15,7 +15,7 @@
 #' set.seed(2016)
 #' position <- SimuData(velocity$y,7)
 #' simulatedata<- data.frame(t=velocity$x,y=position$xnoise,v=velocity$ynoise,boom=0)
-#' SimuData()
+#' @export
 SimuData = function(v,rsnr) {
   n  = length(v)
   dt = 1/n
